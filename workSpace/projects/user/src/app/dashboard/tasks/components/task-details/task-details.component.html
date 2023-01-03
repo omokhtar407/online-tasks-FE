@@ -1,0 +1,24 @@
+
+<section class="pad">
+  <div class="row g-4">
+    <div class="col-12 mb-3">
+      <h1>Task Details</h1>
+      <div class="brdr"></div>
+    </div>
+    <div class="col-12">
+      <div class="card">
+        <div class="img-box">
+          <img class="w-100" [src]="imgPrefix + taskDetails?.image" alt="task.image">
+        </div>
+        <div class="card-details">
+          <h2 class="card-title">{{taskDetails?.title}}</h2>
+          <p class="card-deadline"><strong>Deadline:-</strong> {{taskDetails?.deadline}}</p>
+          <p class="card-description">{{taskDetails?.description}}</p>
+        </div>
+        <div class="action my-2">
+          <button mat-raised-button color="warn" (click)="completeTask()">complete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

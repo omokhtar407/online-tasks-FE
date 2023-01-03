@@ -1,0 +1,21 @@
+.brdr{
+  height: 4px;
+  width: 50px;
+  background-color: var(--main-color);
+}
+.card {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 4px;
+  text-align: center;
+  img
+  {
+    height: 300px;
+    margin-bottom: 1rem;
+  }
+  p{
+    margin: 10px 0;
+  }
+  a{
+    color: var(--whiteColor) !important;
+  }
+}

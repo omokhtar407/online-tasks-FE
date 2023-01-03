@@ -1,0 +1,41 @@
+
+#Login{
+  background-image: url(../../../../assets/imgs/tasks-bg.webp);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.overlay{
+  position: absolute;
+  inset: 0;
+  background-color: rgba($color: #000, $alpha: .1);
+}
+.login_form {
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  a{
+    color: var(--main-color) !important;
+  }
+}
+.logo {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 1.6rem;
+  display: block;
+  color: var(--whiteColor);
+  margin-bottom: 2rem;
+  text-align: center;
+  img {
+    width: 200px;
+  }
+}
+@media (max-width: 767px) {
+  .logo img {
+    width: 150px;
+  }
+}

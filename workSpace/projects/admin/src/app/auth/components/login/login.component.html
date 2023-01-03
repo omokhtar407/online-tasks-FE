@@ -1,0 +1,51 @@
+
+<section
+  id="Login"
+  class=" vh-100 d-flex justify-content-center align-items-center"
+>
+  <div class="overlay"></div>
+  <div class="container position-relative">
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6">
+        <div class="login_form py-5 px-4">
+          <a class="logo" routerLink="">
+            <img src="assets/imgs/logo-tasks-primary.png" alt="logo">
+          </a>
+          <form [formGroup]="loginForm" class="example-form" (ngSubmit)="login()">
+            <div class="row g-4">
+
+              <div class="col-12">
+                <mat-form-field class="example-full-width w-100" appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput formControlName="email">
+                    <mat-error *ngIf="f['email'].errors && f['email'].touched">
+                        <mat-error *ngIf="f['email'].errors.required">
+                          Email is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="f['email'].errors.email">
+                          Email <strong>must be email</strong>
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-12">
+                <mat-form-field class="example-full-width w-100" appearance="fill">
+                  <mat-label>Password</mat-label>
+                  <input type="password" matInput formControlName="password">
+                    <mat-error *ngIf="f['password'].errors && f['password'].touched">
+                        <mat-error *ngIf="f['password'].errors.required">
+                          Password is <strong>required</strong>
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="actions text-center mt-3">
+              <button mat-raised-button color="primary" [disabled]="loginForm.invalid" >Login</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

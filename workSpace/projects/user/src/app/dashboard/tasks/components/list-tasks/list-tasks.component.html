@@ -1,0 +1,59 @@
+
+<section class="pad">
+  <div class="row g-4">
+    <div class="col-12 mb-3">
+      <h1 class="fs-4 fw-bolder">User Tasks</h1>
+      <div class="brdr"></div>
+    </div>
+    <div *ngIf="userTasks.length != 0 "  class="col-12 ">
+      <div class="row g-3 mb-5">
+        <div
+          *ngFor="
+            let task of userTasks
+              | paginate
+                : {
+                    id: 'userTasks',
+                    itemsPerPage: 5,
+                    currentPage: currPage,
+                    totalItems: totalPages
+                  }
+          "
+        class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <img class="w-100" [src]="imgPrefix + task.image" alt="task.image" />
+              <h3 class="card-title">{{ task.title }}</h3>
+              <p class="card-subtitle"><strong>Deadline:-</strong> {{ task.deadline }}</p>
+              <p class="card-text">{{ task.description }}</p>
+              <a
+                routerLink="/tasks/{{ task._id }}"
+                mat-raised-button
+                color="primary"
+                class="card-links"
+                >Details</a
+              >
+              <button
+                mat-raised-button
+                color="warn"
+                class="card-status m-2"
+                (click)="completeTask(task._id)"
+              >
+                complete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center align-content-center">
+        <pagination-controls
+        (pageChange)="handlePageChange($event)"
+        id="userTasks"
+        ></pagination-controls>
+      </div>
+    </div>
+    <div *ngIf="userTasks.length == 0 " class="col-12 d-flex justify-content-center align-items-center">
+      <p class="fs-3 fw-bold text-danger">No Tasks Available ! </p>
+    </div>
+  </div>
+</section>

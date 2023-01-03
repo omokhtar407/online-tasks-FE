@@ -1,0 +1,74 @@
+
+
+<section>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Add New Task</h3>
+    <div class="icon">
+      <mat-icon (click)="closeDialog()">close</mat-icon>
+    </div>
+  </div>
+
+  <form [formGroup]="taskForm" class="example-form">
+    <mat-form-field class="example-full-width w-100 mb-3" appearance="fill">
+      <mat-label>Title</mat-label>
+      <input type="title" matInput formControlName="title">
+        <mat-error *ngIf="f['title'].errors && f['title'].touched">
+            <mat-error *ngIf="f['title'].errors.required">
+              Title is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="f['title'].errors.minlength">
+              Title <strong>min length is 5</strong>
+            </mat-error>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width w-100 mb-3" appearance="fill">
+      <mat-label>UserId</mat-label>
+      <mat-select  formControlName="userId">
+        <mat-option *ngFor="let user of users"  [value]="user.id">{{user.name}}</mat-option>
+      </mat-select>
+        <mat-error *ngIf="f['userId'].errors && f['userId'].touched">
+            <mat-error *ngIf="f['userId'].errors.required">
+              UserId is <strong>required</strong>
+            </mat-error>
+        </mat-error>
+    </mat-form-field>
+
+    <div class="col-md-12 mb-3 pb-3">
+      <label for="imgfile" class="btn btn-light d-block m-2">Select Image</label>
+      <span class="d-block text-center m-2">{{imgFile}}</span>
+      <input id="imgfile" hidden type="file" (change)="selectFile($event)"  placeholder="Choose Image" class="form-control my-3 rounded-0">
+    </div>
+
+    <mat-form-field class="example-full-width w-100 mb-3" appearance="fill">
+      <mat-label>Deadline</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="deadline">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+
+      <mat-error *ngIf="f['deadline'].errors && f['deadline'].touched">
+          <mat-error *ngIf="f['deadline'].errors.required">
+            Deadline is <strong>required</strong>
+          </mat-error>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width w-100 mb-3" appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+        <mat-error *ngIf="f['description'].errors && f['description'].touched">
+            <mat-error *ngIf="f['description'].errors.required">
+              Description is <strong>required</strong>
+            </mat-error>
+        </mat-error>
+    </mat-form-field>
+
+    <div class="actions d-flex justify-content-center align-items-center">
+      <button *ngIf="!userData" class="m-2" mat-raised-button color="primary" (click)="addTask()" [disabled]="taskForm.invalid" >Create</button>
+      <button *ngIf="userData" class="m-2" mat-raised-button color="primary" (click)="updateTask()" [disabled]="taskForm.invalid" >Update</button>
+      <button mat-raised-button color="warn" (click)="closeDialog()"  >Close</button>
+    </div>
+  </form>
+</section>
+
+
